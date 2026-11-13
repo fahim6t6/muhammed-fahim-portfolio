@@ -1,10 +1,14 @@
-# Muhammed Fahim T — Portfolio
+# MUHAMMED FAHIM T — Unity Game Developer Portfolio
 
-Responsive, static portfolio for a Unity Game Developer. It is ready to deploy on Vercel or GitHub Pages with no build step.
+Responsive, high-performance static portfolio website showcasing 12 playable game projects, gameplay mechanics, real-time multiplayer systems, and technical background.
 
-## Publish
+## Features
+- **Responsive Design**: Optimized for laptops, desktops, tablets, and smartphones.
+- **Projects Showcase**: 12 complete Unity projects with video demo links and high-res thumbnails.
+- **Category Filter**: Switch seamlessly between 3D & Systems, 2D & Casual, and Mobile.
+- **No Build Steps**: Pure semantic HTML5, modern CSS3, and vanilla JavaScript. Deploys seamlessly on Vercel, GitHub Pages, or Netlify.
 
-1. Create a GitHub repository and upload these files.
-2. In Vercel, select **Add New → Project**, import that repository, and deploy using the default settings.
-
-The published site will include the demo-video links hosted in Google Drive.
+## Deployment to Vercel
+1. Push this repository to GitHub.
+2. Sign in to [Vercel](https://vercel.com) using GitHub.
+3. Import this repository and click **Deploy**.

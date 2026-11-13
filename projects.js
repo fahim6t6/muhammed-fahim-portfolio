@@ -1,16 +1,251 @@
 const projects = [
-  {title:'TDM', subtitle:'Multiplayer System', video:'1WddtgPAOyl7fnEtqtgWxqgqfnHK7mYb1', image:'https://raw.githubusercontent.com/fahim6t6/Fahim/main/TDM.png', tags:['Unity 3D','Netcode','Relay'], points:['Developed a real-time 3D multiplayer Team Deathmatch game using Netcode and Relay.','Implemented room-code matchmaking with 1v1, 2v2, 3v3, and 4v4 team modes.','Built synchronized movement, shooting, health, ammo, respawning, team scoring, HUD, kill feed, timer, and results.','Used a server-authoritative system to validate damage, scores, player state, and match results.']},
-  {title:'TriPeaks', subtitle:'Solitaire Collections', video:'1AAswEJLzFgyOYu85BxQqFe50fIb1sBPT', image:'https://raw.githubusercontent.com/fahim6t6/Fahim/main/Tripeaks.png', tags:['Unity 2D','C#','Systems'], points:['Players clear all three peaks by selecting cards one rank higher or lower than the current card.','Implemented deck generation, shuffling, drag-and-drop, auto-move, undo, and win systems.','Designed solvable seed-based generation with multiple difficulty levels for replayable gameplay.']},
-  {title:'Pyramid', subtitle:'Solitaire Collections', video:'132L2h9qsko8bLpNVl5i6TwrsknByB3LW', image:'https://raw.githubusercontent.com/fahim6t6/Fahim/main/Pyramid%20.png', tags:['Unity 2D','C#','Systems'], points:['Players clear the pyramid by matching pairs of cards that add up to 13.','Implemented deck generation, shuffling, drag-and-drop, auto-move, undo, and win systems.','Designed solvable seed-based generation with multiple difficulty levels.']},
-  {title:'Zombie Arcade', subtitle:'Survival FPS', video:'11fp7c4TccYjdeT83g56FNN7r_mF3akY4', image:'https://raw.githubusercontent.com/fahim6t6/Fahim/main/Zombie%20arcade.png', tags:['Unity 3D','NavMesh AI','FPS'], points:['Developed an offline arcade-style zombie survival game with a first-person player experience.','Implemented NavMesh zombie AI for player detection, chasing, and a kill-all survival objective.','Added zombie animation and voice/audio effects. Project currently in development.']},
-  {title:'Bowling', subtitle:'Physics Game', video:'1o5zCCTqqNYa0JaZFbKNG78p723zTrdQP', image:'https://raw.githubusercontent.com/fahim6t6/Fahim/main/Bowling.jpg', tags:['Unity 3D','Physics','UI/UX'], points:['Implemented realistic physics for accurate ball and pin interactions.','Scripted Rigidbody ball dynamics and controls: A/D to move, Space to shoot.','Added a high-score UI plus rolling ball, pin-fall music, and sound effects.']},
-  {title:'Ball Runner', subtitle:'Android Game', video:'1hrBycpA1zc5vuZ0FLfnlAgGZXzd3Ovqg', image:'https://raw.githubusercontent.com/fahim6t6/Fahim/main/Ball%20Runner.png', tags:['Mobile','Gyroscope','Unity 3D'], points:['Implemented gyroscope controls for tilting the ball left and right.','Developed forward movement, background music, shaking bridge, collision and fall detection.','Created a level-completion system based on safely reaching the destination.']},
-  {title:'Endless Runner', subtitle:'Dynamic Runner', video:'1vG7jjHGlXUtp-bGqt6rvjRCAY1lahARB', image:'https://raw.githubusercontent.com/fahim6t6/Fahim/main/Endless.png', tags:['Unity 3D','Animation','Spawning'], points:['Implemented collectible coins, scoring, collisions, and dynamic environment tile spawning.','Created continuous running and collision-triggered fall animation.','Added coin and collision effects plus immersive background music.']},
-  {title:'Tank vs Tank', subtitle:'3D Combat', video:'10ilh2Qev35HVR6l61sBsPoey-Px3-qdc', image:'https://raw.githubusercontent.com/fahim6t6/Fahim/main/Tank%20vs%20Tank.jpg', tags:['Unity 3D','AI','Combat'], points:['Built a 3D player-versus-enemy tank battle game.','Created enemy AI for patrol, detection, and attack behaviours.','Scripted projectile physics, collision detection, health bars, and tank audio.']},
-  {title:'Snow Skater', subtitle:'2D Platformer', video:'1v135bDtjt62H9B79UqAb0RkVn0nc8J7i', image:'https://raw.githubusercontent.com/fahim6t6/Fahim/main/Skating.jpg', tags:['Unity 2D','Physics','Particles'], points:['Navigate a snow skater through hazards, goals, and collectibles.','Used Surface Effector 2D and Sprite Shape Controller for realistic sliding terrain.','Added snow particles, collision and sliding audio, ambient music, and win effects.']},
-  {title:'Pizza Delivery', subtitle:'Driving Game', video:'12YgrkZVpOlT6GkQIXww3CTCwe9tFMVTW', image:'https://raw.githubusercontent.com/fahim6t6/Fahim/main/Pizza.jpg', tags:['Unity 3D','Driving','Level Design'], points:['Designed user-friendly car controls, roads, pond, river, trees, and houses.','Car changes to blue when picking up pizza, then returns to normal after delivery.','Managed scoring, speed boost, and win/lose game-state systems.']},
-  {title:'Space Coin Collector', subtitle:'Arcade Flight', video:'1Uv_9mvrXKqnWzMDVKH-3CHSj3R9LxjPw', image:'https://raw.githubusercontent.com/fahim6t6/Fahim/main/Space%20jet.jpg', tags:['Unity 2D','Arcade','Spawning'], points:['Built responsive jet controls for dodging obstacles and collecting coins.','Created collision handling for coins, obstacles, damage, and game over.','Added looping space tiles, random asteroids/power-ups, music, and effects.']},
-  {title:'Jet Parking', subtitle:'Flight Challenge', video:'1ynY8w6l56bwi8N-xQgBz5X5vKJ6fgiN9', image:'https://raw.githubusercontent.com/fahim6t6/Fahim/main/Jet%20parking.jpg', tags:['Unity 3D','Level Design','Physics'], points:['Pilot a jet island-to-island and land safely on target pads.','Created five increasingly challenging levels with obstacles and moving creatures.','Implemented W/A/S/D/Space controls, crash particles, game-over state, and completion sounds.']}
+  {
+    title: 'TDM',
+    subtitle: 'Multiplayer System',
+    category: 'multiplayer',
+    categoryLabel: '3D & Multiplayer',
+    videoUrl: 'https://drive.google.com/file/d/1WddtgPAOyl7fnEtqtgWxqgqfnHK7mYb1/view?usp=drivesdk',
+    image: 'https://raw.githubusercontent.com/fahim6t6/Fahim/main/TDM.png',
+    tags: ['Unity 3D', 'Netcode', 'Relay', 'Multiplayer System'],
+    points: [
+      'Developed a real-time 3D multiplayer Team Deathmatch game in Unity using Netcode and Relay.',
+      'Implemented room-code matchmaking with 1v1, 2v2, 3v3, and 4v4 team modes.',
+      'Built synchronized movement, shooting, health, ammo/reload, ammo pickup, respawning, and team scoring systems.',
+      'Used a server-authoritative system to validate damage, scores, player state, and match results.',
+      'Created HUD, kill feed, match timer, game-over results, battle ground animation, audio effects, and pause/settings controls.'
+    ]
+  },
+  {
+    title: 'Tripeaks',
+    subtitle: 'Solitaire Collections',
+    category: 'casual',
+    categoryLabel: '2D & Casual',
+    videoUrl: 'https://drive.google.com/file/d/1AAswEJLzFgyOYu85BxQqFe50fIb1sBPT/view?usp=drivesdk',
+    image: 'https://raw.githubusercontent.com/fahim6t6/Fahim/main/Tripeaks.png',
+    tags: ['Unity 2D', 'C#', 'Mobile', 'Card Systems'],
+    points: [
+      'Implemented a winning condition where players clear all three peaks by selecting cards one rank higher or lower than the current card.',
+      'Implemented complete card systems including deck generation, shuffling, drag-and-drop controls, auto card movement, undo functionality, and win validation.',
+      'Designed fully solvable game generation systems using seed-based algorithms with multiple difficulty levels for balanced and replayable gameplay.'
+    ]
+  },
+  {
+    title: 'Pyramid',
+    subtitle: 'Solitaire Collections',
+    category: 'casual',
+    categoryLabel: '2D & Casual',
+    videoUrl: 'https://drive.google.com/file/d/132L2h9qsko8bLpNVl5i6TwrsknByB3LW/view?usp=drivesdk',
+    image: 'https://raw.githubusercontent.com/fahim6t6/Fahim/main/Pyramid%20.png',
+    tags: ['Unity 2D', 'C#', 'Mobile', 'Algorithms'],
+    points: [
+      'Implemented a winning condition where players clear the entire card pyramid by matching pairs of cards that add up to 13.',
+      'Implemented complete card systems including deck generation, shuffling, drag-and-drop controls, auto card movement, undo functionality, and win validation.',
+      'Designed fully solvable game generation systems using seed-based algorithms with multiple difficulty levels for balanced and replayable gameplay.'
+    ]
+  },
+  {
+    title: 'Zombie Arcade',
+    subtitle: 'Survival FPS',
+    category: 'multiplayer',
+    categoryLabel: '3D Action',
+    videoUrl: 'https://drive.google.com/file/d/11fp7c4TccYjdeT83g56FNN7r_mF3akY4/view?usp=drivesdk',
+    image: 'https://raw.githubusercontent.com/fahim6t6/Fahim/main/Zombie%20arcade.png',
+    tags: ['Unity 3D', 'NavMesh AI', 'FPS', 'Animation'],
+    points: [
+      'Developed an offline arcade-style zombie survival game in Unity with an immersive first-person player experience.',
+      'Implemented NavMesh-based zombie AI that detects players within a radius, chases targets, and supports a “kill all zombies” survival objective.',
+      'Added zombie animations and voice/audio effects; project currently under active development.'
+    ]
+  },
+  {
+    title: 'Bowling',
+    subtitle: 'Physics Game',
+    category: 'multiplayer',
+    categoryLabel: '3D Physics',
+    videoUrl: 'https://drive.google.com/file/d/1o5zCCTqqNYa0JaZFbKNG78p723zTrdQP/view?usp=drivesdk',
+    image: 'https://raw.githubusercontent.com/fahim6t6/Fahim/main/Bowling.jpg',
+    tags: ['Unity 3D', 'Rigidbody Physics', 'UI/UX Design'],
+    points: [
+      'Implemented realistic physics for accurate pin and ball interactions.',
+      'Scripted realistic ball dynamics using Unity’s Rigidbody and physics engine for authentic gameplay feel.',
+      'Mapped intuitive gaming controls: A (move ball left), D (move ball right), Space (shoot ball).',
+      'Added UI/UX highscore button to track and display the player’s highest score.',
+      'Integrated sound effects and music for realistic rolling ball motion and pin falls.'
+    ]
+  },
+  {
+    title: 'Ball Runner',
+    subtitle: 'Android Game',
+    category: 'mobile',
+    categoryLabel: 'Mobile',
+    videoUrl: 'https://drive.google.com/file/d/1hrBycpA1zc5vuZ0FLfnlAgGZXzd3Ovqg/view?usp=drivesdk',
+    image: 'https://raw.githubusercontent.com/fahim6t6/Fahim/main/Ball%20Runner.png',
+    tags: ['Mobile (Android)', 'Gyroscope Sensor', 'Unity 3D', 'Physics'],
+    points: [
+      'Implemented gyroscope tilt controls to maneuver the ball left and right by physically tilting the mobile device.',
+      'Developed a forward movement button for continuous ball control with integrated ambient background music.',
+      'Created challenging shaking and unbalanced bridge mechanics with real-time collision and fall detection.',
+      'Developed a multi-stage level completion system where players must reach the target destination safely.'
+    ]
+  },
+  {
+    title: 'Endless Runner',
+    subtitle: 'Dynamic Runner',
+    category: 'multiplayer',
+    categoryLabel: '3D Action',
+    videoUrl: 'https://drive.google.com/file/d/1vG7jjHGlXUtp-bGqt6rvjRCAY1lahARB/view?usp=drivesdk',
+    image: 'https://raw.githubusercontent.com/fahim6t6/Fahim/main/Endless.png',
+    tags: ['Unity 3D', 'Character Animation', 'Dynamic Spawning', 'Collision System'],
+    points: [
+      'Implemented collectible coins along the running path that dynamically reward the player and increment the score.',
+      'Engineered responsive collision mechanics for interacting with coins, hazards, and environmental obstacles.',
+      'Integrated fluid character running animation for forward movement and dynamic ragdoll/fall animation on impact.',
+      'Engineered an endless environment generator that dynamically spawns world tiles ahead of player movement.',
+      'Paired high-energy background music with crisp audio effects for coin pickups and obstacle hits.'
+    ]
+  },
+  {
+    title: 'Tank vs Tank',
+    subtitle: '3D Combat',
+    category: 'multiplayer',
+    categoryLabel: '3D Combat',
+    videoUrl: 'https://drive.google.com/file/d/10ilh2Qev35HVR6l61sBsPoey-Px3-qdc/view?usp=drivesdk',
+    image: 'https://raw.githubusercontent.com/fahim6t6/Fahim/main/Tank%20vs%20Tank.jpg',
+    tags: ['Unity 3D', 'Enemy AI', 'Projectile Physics', 'Combat Systems'],
+    points: [
+      'Built a full 3D player-versus-enemy tank battle arena game in Unity.',
+      'Created an autonomous enemy AI system featuring patrol paths, line-of-sight player detection, and tactical attack behaviors.',
+      'Scripted realistic projectile ballistics, explosive collision detection, and damage calculations.',
+      'Integrated responsive HUD health bars for real-time tracking of both player and opponent status.',
+      'Added high-impact audio effects for cannon fire, explosions, and heavy tank engine treads.'
+    ]
+  },
+  {
+    title: 'Snow Skater',
+    subtitle: '2D Platformer',
+    category: 'casual',
+    categoryLabel: '2D Physics',
+    videoUrl: 'https://drive.google.com/file/d/1v135bDtjt62H9B79UqAb0RkVn0nc8J7i/view?usp=drivesdk',
+    image: 'https://raw.githubusercontent.com/fahim6t6/Fahim/main/Skating.jpg',
+    tags: ['Unity 2D', 'Surface Effector 2D', 'Sprite Shape', 'Particle FX'],
+    points: [
+      'Navigate a snow skater down steep slopes, avoiding hazards while collecting items and reaching the finish line.',
+      'Utilized Surface Effector 2D to create realistic low-friction ice and snow physics with momentum accumulation.',
+      'Constructed organic hillside levels with Unity Sprite Shape Controller for smooth hills, jumps, and valleys.',
+      'Created visual particle systems for snow puffs upon landing/impact and a celebratory confetti burst on winning.',
+      'Composed realistic audio including snow carving, crunchy collision hits, and ambient winter music.'
+    ]
+  },
+  {
+    title: 'Pizza Delivery',
+    subtitle: 'Driving Game',
+    category: 'multiplayer',
+    categoryLabel: '3D Simulation',
+    videoUrl: 'https://drive.google.com/file/d/12YgrkZVpOlT6GkQIXww3CTCwe9tFMVTW/view?usp=drivesdk',
+    image: 'https://raw.githubusercontent.com/fahim6t6/Fahim/main/Pizza.jpg',
+    tags: ['Unity 3D', 'Car Physics', 'Level Design', 'Game State Logic'],
+    points: [
+      'Designed responsive, arcade-style vehicle steering and acceleration controls.',
+      'Engineered interactive delivery logic: vehicle dynamically turns blue when carrying a pizza and reverts upon delivery.',
+      'Built a charming low-poly town featuring roads, ponds, rivers, trees, and residential drop-off points.',
+      'Managed full game loop logic including order countdown timer, speed boost pickups, and win/lose evaluations.'
+    ]
+  },
+  {
+    title: 'Space Coin Collector',
+    subtitle: 'Arcade Flight',
+    category: 'casual',
+    categoryLabel: '2D Arcade',
+    videoUrl: 'https://drive.google.com/file/d/1Uv_9mvrXKqnWzMDVKH-3CHSj3R9LxjPw/view?usp=drivesdk',
+    image: 'https://raw.githubusercontent.com/fahim6t6/Fahim/main/Space%20jet.jpg',
+    tags: ['Unity 2D', 'Arcade Mechanics', 'Procedural Tiles', 'Space Shooter'],
+    points: [
+      'Equipped jet with nimble 2D flight controls to dodge floating hazards while grabbing floating space coins.',
+      'Implemented robust trigger and collision systems for collecting score points or incurring shield damage.',
+      'Created an endless scrolling universe through seamless background looping and procedural tile spawning.',
+      'Randomized hazard generation for asteroids and shields to keep every run fresh and challenging.',
+      'Accompanied with atmospheric retro-futuristic synth music and retro laser/pickup sound effects.'
+    ]
+  },
+  {
+    title: 'Jet Parking',
+    subtitle: 'Flight Challenge',
+    category: 'multiplayer',
+    categoryLabel: '3D Simulation',
+    videoUrl: 'https://drive.google.com/file/d/1ynY8w6l56bwi8N-xQgBz5X5vKJ6fgiN9/view?usp=drivesdk',
+    image: 'https://raw.githubusercontent.com/fahim6t6/Fahim/main/Jet%20parking.jpg',
+    tags: ['Unity 3D', 'Flight Simulation', '3D Level Design', 'Impact Physics'],
+    points: [
+      'Developed core aerodynamic flight and landing mechanics for island-to-island navigation.',
+      'Crafted 5 challenging levels featuring tight island canyons, stationary towers, and moving aerial creatures.',
+      'Programmed full 3D flight controls: W (throttle), A (yaw left), S (air brake), D (yaw right), Space (vertical lift).',
+      'Configured high-stakes crash physics: collisions with terrain or creatures trigger instant Game Over.',
+      'Engineered impact particle systems (smoke, sparks, flying debris) and distinct landing completion chimes.'
+    ]
+  }
 ];
-const grid = document.querySelector('#project-grid');
-grid.innerHTML = projects.map((p,i) => `<article class="project"><a class="media" href="https://drive.google.com/file/d/${p.video}/view" target="_blank" rel="noopener" aria-label="Watch ${p.title} video"><img src="${p.image}" alt="${p.title} game screenshot" loading="lazy"><span class="play">▶</span><span class="project-number">${String(i+1).padStart(2,'0')}</span></a><div class="project-title"><div><h3>${p.title}</h3><p>${p.subtitle}</p></div><a href="https://drive.google.com/file/d/${p.video}/view" target="_blank" rel="noopener">Watch demo ↗</a></div><div class="tags">${p.tags.map(t=>`<span>${t}</span>`).join('')}</div><ul>${p.points.map(x=>`<li>${x}</li>`).join('')}</ul></article>`).join('');
+
+function renderProjects(filter = 'all') {
+  const grid = document.querySelector('#project-grid');
+  if (!grid) return;
+
+  const filtered = filter === 'all' 
+    ? projects 
+    : projects.filter(p => p.category === filter || (filter === 'mobile' && p.tags.some(t => t.toLowerCase().includes('mobile') || t.toLowerCase().includes('android'))));
+
+  grid.innerHTML = filtered.map((p, index) => `
+    <article class="project-card" data-category="${p.category}">
+      <div class="card-media-wrapper">
+        <a class="card-media" href="${p.videoUrl}" target="_blank" rel="noopener noreferrer" aria-label="Watch demo of ${p.title}">
+          <img src="${p.image}" alt="${p.title} thumbnail" loading="lazy" />
+          <div class="media-overlay">
+            <div class="play-btn-circle">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+            </div>
+            <span class="watch-text">Watch Gameplay Demo</span>
+          </div>
+          <span class="project-index">#${String(index + 1).padStart(2, '0')}</span>
+          <span class="category-pill">${p.categoryLabel}</span>
+        </a>
+      </div>
+      
+      <div class="card-content">
+        <div class="card-header">
+          <div>
+            <h3 class="card-title">${p.title}</h3>
+            <span class="card-subtitle">${p.subtitle}</span>
+          </div>
+          <a class="demo-link-btn" href="${p.videoUrl}" target="_blank" rel="noopener noreferrer">
+            <span>Demo</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M7 17l9.2-9.2M17 17V8H8"/>
+            </svg>
+          </a>
+        </div>
+
+        <div class="tags-container">
+          ${p.tags.map(tag => `<span class="tag-pill">${tag}</span>`).join('')}
+        </div>
+
+        <ul class="points-list">
+          ${p.points.map(pt => `<li>${pt}</li>`).join('')}
+        </ul>
+      </div>
+    </article>
+  `).join('');
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  renderProjects('all');
+
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  filterButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterButtons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderProjects(btn.dataset.filter);
+    });
+  });
+});
