@@ -41,6 +41,53 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // CV Dropdown interactive toggle (both Nav and Hero)
+  const cvDropdowns = document.querySelectorAll('.cv-dropdown');
+  cvDropdowns.forEach(dropdown => {
+    const trigger = dropdown.querySelector('.cv-trigger-btn');
+    if (!trigger) return;
+
+    trigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isAlreadyOpen = dropdown.classList.contains('open');
+      
+      // Close all dropdowns
+      cvDropdowns.forEach(d => {
+        d.classList.remove('open');
+        const btn = d.querySelector('.cv-trigger-btn');
+        if (btn) btn.setAttribute('aria-expanded', 'false');
+      });
+
+      // Toggle this one
+      if (!isAlreadyOpen) {
+        dropdown.classList.add('open');
+        trigger.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+
+  // Close dropdown when clicking anywhere outside
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.cv-dropdown')) {
+      cvDropdowns.forEach(d => {
+        d.classList.remove('open');
+        const btn = d.querySelector('.cv-trigger-btn');
+        if (btn) btn.setAttribute('aria-expanded', 'false');
+      });
+    }
+  });
+
+  // Close dropdown on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      cvDropdowns.forEach(d => {
+        d.classList.remove('open');
+        const btn = d.querySelector('.cv-trigger-btn');
+        if (btn) btn.setAttribute('aria-expanded', 'false');
+      });
+    }
+  });
+
   // ========================================================
   // INTERACTIVE GAMING BACKGROUND ENGINE (Canvas 2D)
   // ========================================================

@@ -1163,3 +1163,151 @@ a {
     text-align: center;
   }
 }
+
+
+/* ======================================================== */
+/* CV Dropdown Styling (Nav & Hero)                        */
+/* ======================================================== */
+.cv-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.cv-trigger-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  transition: all 0.25s ease;
+}
+
+.chevron-arrow {
+  transition: transform 0.25s ease;
+}
+
+.cv-dropdown.open .chevron-arrow {
+  transform: rotate(180deg);
+}
+
+.nav-cv-btn {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 6px 0;
+}
+
+.nav-cv-btn:hover, .cv-dropdown.open .nav-cv-btn {
+  color: var(--accent-green);
+}
+
+.hero-cv-btn {
+  cursor: pointer;
+}
+
+.cv-dropdown.open .hero-cv-btn {
+  border-color: var(--accent-green);
+  color: var(--accent-green);
+  box-shadow: 0 0 15px rgba(0, 245, 155, 0.3);
+}
+
+/* Dropdown Menu Popup */
+.cv-menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  min-width: 190px;
+  background: rgba(14, 20, 28, 0.96);
+  border: 1px solid rgba(0, 245, 155, 0.4);
+  border-radius: var(--radius-sm);
+  padding: 8px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 245, 155, 0.15);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.cv-dropdown.open .cv-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.cv-menu-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  color: var(--text-main);
+  font-family: var(--font-mono);
+  font-size: 0.86rem;
+  font-weight: 600;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.cv-menu-link svg {
+  color: var(--accent-green);
+  transition: transform 0.2s ease;
+}
+
+.cv-menu-link:hover {
+  background: rgba(0, 245, 155, 0.12);
+  color: var(--accent-green);
+}
+
+.cv-menu-link:hover svg {
+  transform: scale(1.15);
+}
+
+/* On mobile nav menu drawer */
+@media (max-width: 768px) {
+  .nav-cv-dropdown {
+    width: 100%;
+  }
+
+  .nav-cv-btn {
+    width: 100%;
+    justify-content: space-between;
+    font-size: 1.05rem;
+    padding: 8px 0;
+  }
+
+  .nav-cv-dropdown .cv-menu {
+    position: static;
+    transform: none;
+    width: 100%;
+    box-shadow: none;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border);
+    margin-top: 6px;
+    display: none;
+  }
+
+  .nav-cv-dropdown.open .cv-menu {
+    display: flex;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .hero-cv-dropdown {
+    width: 100%;
+  }
+
+  .hero-cv-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
