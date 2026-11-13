@@ -679,70 +679,122 @@ a {
   position: relative;
   width: 100%;
   aspect-ratio: 16 / 9;
-  background: #0d1219;
+  background: #090c10;
   overflow: hidden;
+  cursor: pointer;
+  border-bottom: 1px solid var(--border);
 }
 
-.card-media {
-  display: block;
+.card-media-content {
+  position: relative;
   width: 100%;
   height: 100%;
-  position: relative;
+  display: block;
 }
 
-.card-media img {
+.card-media-content img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
   transition: transform 0.4s ease;
 }
 
-.project-card:hover .card-media img {
-  transform: scale(1.05);
+.card-media-wrapper:hover .card-media-content img {
+  transform: scale(1.04);
 }
 
 .media-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(9, 12, 16, 0.6);
+  background: rgba(9, 12, 16, 0.55);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 10px;
-  opacity: 0.9;
+  opacity: 0.92;
   transition: all 0.3s ease;
 }
 
-.project-card:hover .media-overlay {
-  background: rgba(9, 12, 16, 0.4);
+.card-media-wrapper:hover .media-overlay {
+  background: rgba(9, 12, 16, 0.35);
+  opacity: 1;
 }
 
 .play-btn-circle {
-  width: 54px;
-  height: 54px;
+  width: 56px;
+  height: 56px;
   background: var(--accent-green);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #000;
-  box-shadow: 0 0 20px rgba(0, 245, 155, 0.6);
-  transition: transform 0.25s ease;
+  box-shadow: 0 0 25px rgba(0, 245, 155, 0.65);
+  transition: transform 0.25s ease, background-color 0.2s ease;
 }
 
-.card-media:hover .play-btn-circle {
-  transform: scale(1.12);
+.card-media-wrapper:hover .play-btn-circle {
+  transform: scale(1.15);
+  background-color: #33ffb5;
 }
 
 .watch-text {
   font-family: var(--font-mono);
-  font-size: 0.82rem;
-  font-weight: 600;
+  font-size: 0.8rem;
+  font-weight: 700;
   color: #ffffff;
-  background: rgba(0, 0, 0, 0.6);
-  padding: 4px 10px;
+  background: rgba(0, 0, 0, 0.75);
+  border: 1px solid rgba(0, 245, 155, 0.35);
+  padding: 4px 12px;
+  border-radius: 50px;
+  letter-spacing: 0.5px;
+}
+
+/* In-place Video Player iframe */
+.embed-video-iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  z-index: 10;
+  background: #000000;
+}
+
+/* Close Video / Return to Thumbnail Button */
+.close-video-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 25;
+  background: rgba(14, 18, 25, 0.9);
+  border: 1px solid rgba(0, 245, 155, 0.5);
+  color: #ffffff;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  padding: 5px 10px;
   border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
+  transition: all 0.2s ease;
+}
+
+.close-video-btn:hover {
+  background: #ef4444;
+  border-color: #ef4444;
+  color: #fff;
+  transform: scale(1.05);
+}
+
+/* When playing: hide thumbnail and overlays */
+.card-media-wrapper.is-playing .card-media-content {
+  display: none !important;
 }
 
 .project-index {
@@ -813,6 +865,7 @@ a {
   font-weight: 600;
   border-radius: var(--radius-sm);
   white-space: nowrap;
+  cursor: pointer;
   transition: all 0.2s ease;
 }
 

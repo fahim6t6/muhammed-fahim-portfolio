@@ -186,6 +186,58 @@ const projects = [
   }
 ];
 
+function getEmbedUrl(url) {
+  const idMatch = url.match(/\/d\/([a-zA-Z0-9_-]+)/);
+  if (idMatch && idMatch[1]) {
+    return `https://drive.google.com/file/d/${idMatch[1]}/preview`;
+  }
+  return url.replace(/\/view(\?.*)?$/, '/preview');
+}
+
+function stopAllVideos() {
+  document.querySelectorAll('.card-media-wrapper.is-playing').forEach(wrapper => {
+    wrapper.classList.remove('is-playing');
+    const iframe = wrapper.querySelector('.embed-video-iframe');
+    if (iframe) iframe.remove();
+    const closeBtn = wrapper.querySelector('.close-video-btn');
+    if (closeBtn) closeBtn.remove();
+  });
+}
+
+function playVideoInCard(wrapper, embedUrl, title) {
+  // If this card is already playing, do nothing
+  if (wrapper.classList.contains('is-playing')) return;
+
+  // Turn off any other currently running video first
+  stopAllVideos();
+
+  // Set card to playing state and hide thumbnail
+  wrapper.classList.add('is-playing');
+
+  // Create responsive iframe for Google Drive video player
+  const iframe = document.createElement('iframe');
+  iframe.src = `${embedUrl}?autoplay=1`;
+  iframe.className = 'embed-video-iframe';
+  iframe.setAttribute('allow', 'autoplay; fullscreen');
+  iframe.setAttribute('allowfullscreen', 'true');
+  iframe.setAttribute('title', `${title} Gameplay Video`);
+
+  // Create Close / Back to thumbnail button
+  const closeBtn = document.createElement('button');
+  closeBtn.className = 'close-video-btn';
+  closeBtn.setAttribute('aria-label', 'Close video');
+  closeBtn.innerHTML = `✕ <span>Thumbnail</span>`;
+  closeBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    wrapper.classList.remove('is-playing');
+    iframe.remove();
+    closeBtn.remove();
+  });
+
+  wrapper.appendChild(iframe);
+  wrapper.appendChild(closeBtn);
+}
+
 function renderProjects(filter = 'all') {
   const grid = document.querySelector('#project-grid');
   if (!grid) return;
@@ -194,10 +246,12 @@ function renderProjects(filter = 'all') {
     ? projects 
     : projects.filter(p => p.category === filter || (filter === 'mobile' && p.tags.some(t => t.toLowerCase().includes('mobile') || t.toLowerCase().includes('android'))));
 
-  grid.innerHTML = filtered.map((p, index) => `
+  grid.innerHTML = filtered.map((p, index) => {
+    const embedUrl = getEmbedUrl(p.videoUrl);
+    return `
     <article class="project-card" data-category="${p.category}">
-      <div class="card-media-wrapper">
-        <a class="card-media" href="${p.videoUrl}" target="_blank" rel="noopener noreferrer" aria-label="Watch demo of ${p.title}">
+      <div class="card-media-wrapper" data-embed="${embedUrl}" data-title="${p.title}">
+        <div class="card-media-content">
           <img src="${p.image}" alt="${p.title} thumbnail" loading="lazy" />
           <div class="media-overlay">
             <div class="play-btn-circle">
@@ -205,11 +259,11 @@ function renderProjects(filter = 'all') {
                 <path d="M8 5v14l11-7z"/>
               </svg>
             </div>
-            <span class="watch-text">Watch Gameplay Demo</span>
+            <span class="watch-text">▶ Play Video Here</span>
           </div>
           <span class="project-index">#${String(index + 1).padStart(2, '0')}</span>
           <span class="category-pill">${p.categoryLabel}</span>
-        </a>
+        </div>
       </div>
       
       <div class="card-content">
@@ -218,12 +272,12 @@ function renderProjects(filter = 'all') {
             <h3 class="card-title">${p.title}</h3>
             <span class="card-subtitle">${p.subtitle}</span>
           </div>
-          <a class="demo-link-btn" href="${p.videoUrl}" target="_blank" rel="noopener noreferrer">
-            <span>Demo</span>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M7 17l9.2-9.2M17 17V8H8"/>
+          <button class="demo-link-btn inline-play-trigger" data-embed="${embedUrl}" data-title="${p.title}" type="button">
+            <span>Play Video</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M8 5v14l11-7z"/>
             </svg>
-          </a>
+          </button>
         </div>
 
         <div class="tags-container">
@@ -235,7 +289,31 @@ function renderProjects(filter = 'all') {
         </ul>
       </div>
     </article>
-  `).join('');
+  `;
+  }).join('');
+
+  // Attach click listeners to all media wrappers for in-place video playback
+  document.querySelectorAll('.card-media-wrapper').forEach(wrapper => {
+    wrapper.addEventListener('click', (e) => {
+      // Don't trigger if clicking close button
+      if (e.target.closest('.close-video-btn')) return;
+      const embedUrl = wrapper.dataset.embed;
+      const title = wrapper.dataset.title;
+      playVideoInCard(wrapper, embedUrl, title);
+    });
+  });
+
+  // Attach click listeners to "Play Video" header buttons as well
+  document.querySelectorAll('.inline-play-trigger').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const card = btn.closest('.project-card');
+      const wrapper = card.querySelector('.card-media-wrapper');
+      const embedUrl = btn.dataset.embed;
+      const title = btn.dataset.title;
+      playVideoInCard(wrapper, embedUrl, title);
+    });
+  });
 }
 
 document.addEventListener('DOMContentLoaded', () => {
