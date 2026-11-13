@@ -50,11 +50,12 @@ const projects = [
     categoryLabel: '3D Action',
     videoUrl: 'https://drive.google.com/file/d/11fp7c4TccYjdeT83g56FNN7r_mF3akY4/view?usp=drivesdk',
     image: 'https://raw.githubusercontent.com/fahim6t6/Fahim/main/Zombie%20arcade.png',
-    tags: ['Unity 3D', 'NavMesh AI', 'FPS', 'Animation'],
+    tags: ['Unity 3D', 'NavMesh AI', 'FPS', 'In Development'],
     points: [
       'Developed an offline arcade-style zombie survival game in Unity with an immersive first-person player experience.',
       'Implemented NavMesh-based zombie AI that detects players within a radius, chases targets, and supports a “kill all zombies” survival objective.',
-      'Added zombie animations and voice/audio effects; project currently under active development.'
+      'Added zombie animations and voice/audio effects.',
+      'Project is currently not completed — actively working on it.'
     ]
   },
   {
